@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Sqlite" id="Project-17ee" database="Sqlite" >
+	<schema name="Default" >
+		<table name="TblAmostras" >
+			<column name="id_amostras" type="INTEGER" jt="4" mandatory="y" />
+			<column name="coletores_amostras" type="NUMERIC" jt="2" mandatory="y" />
+			<column name="plantas_amostras" type="NUMERIC" jt="2" mandatory="y" />
+			<column name="id_planta" type="INTEGER" jt="4" />
+			<index name="pk_TblAmostras" unique="PRIMARY_KEY" >
+				<column name="id_amostras" />
+			</index>
+			<fk name="fk_TblAmostras" to_schema="Default" to_table="TblPlanta" >
+				<fk_column name="id_planta" pk="id_planta" />
+			</fk>
+		</table>
+		<table name="TblColetor" >
+			<column name="id_coletor" type="INTEGER" jt="4" mandatory="y" />
+			<column name="nome_coletor" type="TEXT" jt="-1" />
+			<column name="quantidade" type="NUMERIC" jt="2" mandatory="y" />
+			<index name="pk_TblColetor" unique="PRIMARY_KEY" >
+				<column name="id_coletor" />
+			</index>
+		</table>
+		<table name="TblPlanta" >
+			<column name="id_planta" type="INTEGER" jt="4" mandatory="y" />
+			<column name="nome_planta" type="TEXT" jt="-1" mandatory="y" />
+			<column name="id_coletor" type="INTEGER" jt="4" />
+			<column name="cor_planta" type="TEXT" jt="-1" mandatory="y" />
+			<column name="categoria_planta" type="TEXT" jt="-1" mandatory="y" />
+			<index name="pk_TblPlanta" unique="PRIMARY_KEY" >
+				<column name="id_planta" />
+			</index>
+			<fk name="fk_TblPlanta" to_schema="Default" to_table="TblColetor" >
+				<fk_column name="id_coletor" pk="id_coletor" />
+			</fk>
+		</table>
+	</schema>
+	<connector name="Sqlite" database="Sqlite" driver_class="org.sqlite.JDBC" driver_jar="sqlite-jdbc-3.40.0.0.jar" driver_desc="Standard" host="localhost" port="7210" instance="C:/Users/Kakau/Documents/Tutorial_M2_Ana_Martire/SEMANA_02/02_AUT_EST_ENTREGA/Aula02_Programação_Ex1.db" useSystemProxy="false" />
+	<layout name="Main Layout" id="Layout-1f3b" show_relation="columns" >
+		<entity schema="Default" name="TblAmostras" color="C1D8EE" x="464" y="80" />
+		<entity schema="Default" name="TblColetor" color="C1D8EE" x="48" y="48" />
+		<entity schema="Default" name="TblPlanta" color="C1D8EE" x="240" y="48" />
+	</layout>
+</project>

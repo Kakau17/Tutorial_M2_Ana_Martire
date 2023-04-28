@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
               <body>\
                 <div id="main"> \
                        <h1> Etapa 1 - INSTALACAO - Servidor Node.js </h1> \
-                       <H2> Meu servidor NODE.js funciona!</H2> </div> \
+                       <H2> Meu servidor NODE.js funciona! Irra!</H2> </div> \
               </body> \
            </html>');
 });

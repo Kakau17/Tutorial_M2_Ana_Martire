@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Sqlite" id="Project-17ee" database="Sqlite" >
+	<schema name="Default" >
+		<table name="TblAmostras" >
+			<column name="id_amostras" type="INTEGER" jt="4" mandatory="y" />
+			<column name="coletores_amostras" type="NUMERIC" jt="2" mandatory="y" />
+			<column name="plantas_amostras" type="NUMERIC" jt="2" mandatory="y" />
+			<column name="id_planta" type="INTEGER" jt="4" />
+			<index name="pk_TblAmostras" unique="PRIMARY_KEY" >
+				<column name="id_amostras" />
+			</index>
+			<fk name="fk_TblAmostras" to_schema="Default" to_table="TblPlanta" >
+				<fk_column name="id_planta" pk="id_planta" />
+			</fk>
+		</table>
+		<table name="TblColetor" >
+			<column name="id_coletor" type="INTEGER" jt="4" mandatory="y" />
+			<column name="nome_coletor" type="TEXT" jt="-1" />
+			<column name="quantidade" type="NUMERIC" jt="2" mandatory="y" />
+			<index name="pk_TblColetor" unique="PRIMARY_KEY" >
+				<column name="id_coletor" />
+			</index>
+		</table>
+		<table name="TblPlanta" >
+			<column name="id_planta" type="INTEGER" jt="4" mandatory="y" />
+			<column name="nome_planta" type="TEXT" jt="-1" mandatory="y" />
+			<column name="id_coletor" type="INTEGER" jt="4" />
+			<column name="cor_planta" type="TEXT" jt="-1" mandatory="y" />
+			<column name="categoria_planta" type="TEXT" jt="-1" mandatory="y" />
+			<index name="pk_TblPlanta" unique="PRIMARY_KEY" >
+				<column name="id_planta" />
+			</index>
+			<fk name="fk_TblPlanta" to_schema="Default" to_table="TblColetor" >
+				<fk_column name="id_coletor" pk="id_coletor" />
+			</fk>
+		</table>
+		<table name="experiencia" >
+			<column name="id_experiencia" type="INTEGER" jt="4" mandatory="y" />
+			<column name="nome_empresa" type="TEXT" jt="-1" mandatory="y" />
+			<column name="ano_inicio" type="TEXT" jt="-1" mandatory="y" />
+			<column name="ano_termino" type="TEXT" jt="-1" mandatory="y" />
+			<column name="cargo" type="TEXT" jt="-1" mandatory="y" />
+			<column name="descricao" type="TEXT" jt="-1" mandatory="y" />
+			<column name="id_pessoa" type="INTEGER" jt="4" />
+			<index name="pk_experiencia" unique="PRIMARY_KEY" >
+				<column name="id_experiencia" />
+			</index>
+			<fk name="fk_experiencia" to_schema="Default" to_table="pessoa" >
+				<fk_column name="id_pessoa" pk="id_pessoa" />
+			</fk>
+		</table>
+		<table name="formacao" >
+			<column name="id_formacao" type="INTEGER" jt="4" mandatory="y" />
+			<column name="curso" type="TEXT" jt="-1" mandatory="y" />
+			<column name="ano_inicio" type="TEXT" jt="-1" mandatory="y" />
+			<column name="ano_termino" type="TEXT" jt="-1" mandatory="y" />
+			<column name="descricao" type="TEXT" jt="-1" mandatory="y" />
+			<column name="id_pessoa" type="INTEGER" jt="4" />
+			<index name="pk_formacao" unique="PRIMARY_KEY" >
+				<column name="id_formacao" />
+			</index>
+			<fk name="fk_formacao" to_schema="Default" to_table="pessoa" >
+				<fk_column name="id_pessoa" pk="id_pessoa" />
+			</fk>
+		</table>
+		<table name="habilidades" >
+			<column name="id_habilidades" type="INTEGER" jt="4" mandatory="y" />
+			<column name="nome_habilidade" type="TEXT" jt="-1" mandatory="y" />
+			<column name="grau_habilidade" type="TEXT" jt="-1" mandatory="y" />
+			<column name="id_pessoa" type="INTEGER" jt="4" />
+			<index name="pk_habilidades" unique="PRIMARY_KEY" >
+				<column name="id_habilidades" />
+			</index>
+			<fk name="fk_habilidades" to_schema="Default" to_table="pessoa" >
+				<fk_column name="id_pessoa" pk="id_pessoa" />
+			</fk>
+		</table>
+		<table name="personalidade" >
+			<column name="id_personalidade" type="INTEGER" jt="4" mandatory="y" />
+			<column name="nome_personalidade" type="TEXT" jt="-1" mandatory="y" />
+			<column name="grau_personalidade" type="TEXT" jt="-1" mandatory="y" />
+			<column name="id_pessoa" type="INTEGER" jt="4" />
+			<index name="pk_personalidade" unique="PRIMARY_KEY" >
+				<column name="id_personalidade" />
+			</index>
+			<fk name="fk_personalidade" to_schema="Default" to_table="pessoa" >
+				<fk_column name="id_pessoa" pk="id_pessoa" />
+			</fk>
+		</table>
+		<table name="pessoa" >
+			<column name="id_pessoa" type="INTEGER" jt="4" mandatory="y" />
+			<column name="nome" type="TEXT" jt="-1" mandatory="y" />
+			<column name="foto" type="TEXT" jt="-1" mandatory="y" />
+			<column name="endereco" type="TEXT" jt="-1" mandatory="y" />
+			<column name="telefone" type="TEXT" jt="-1" mandatory="y" />
+			<column name="email" type="TEXT" jt="-1" mandatory="y" />
+			<column name="cargo" type="TEXT" jt="-1" mandatory="y" />
+			<column name="descricao" type="TEXT" jt="-1" mandatory="y" />
+			<index name="pk_pessoa" unique="PRIMARY_KEY" >
+				<column name="id_pessoa" />
+			</index>
+		</table>
+		<table name="realizacoes" >
+			<column name="id_realizacoes" type="INTEGER" jt="4" mandatory="y" />
+			<column name="titulo" type="TEXT" jt="-1" mandatory="y" />
+			<column name="ano" type="TEXT" jt="-1" mandatory="y" />
+			<column name="descricao" type="TEXT" jt="-1" mandatory="y" />
+			<column name="id_pessoa" type="INTEGER" jt="4" />
+			<index name="pk_realizacoes" unique="PRIMARY_KEY" >
+				<column name="id_realizacoes" />
+			</index>
+			<fk name="fk_realizacoes" to_schema="Default" to_table="pessoa" >
+				<fk_column name="id_pessoa" pk="id_pessoa" />
+			</fk>
+		</table>
+	</schema>
+	<connector name="Sqlite" database="Sqlite" driver_class="org.sqlite.JDBC" driver_jar="sqlite-jdbc-3.40.0.0.jar" driver_desc="Standard" host="localhost" port="7210" instance="C:/Users/Kakau/Documents/Tutorial_M2_Ana_Martire/SEMANA_02/02_AUT_EST_ENTREGA/Aula02_Programação_Ex1.db" useSystemProxy="false" />
+	<layout name="AtividadePonderada_S2_M2" id="Layout-13d" show_relation="columns" >
+		<entity schema="Default" name="experiencia" color="EBEEC1" x="48" y="208" />
+		<entity schema="Default" name="formacao" color="EEC1C1" x="48" y="48" />
+		<entity schema="Default" name="habilidades" color="D9C1EE" x="448" y="256" />
+		<entity schema="Default" name="personalidade" color="D9C1EE" x="448" y="384" />
+		<entity schema="Default" name="pessoa" color="C1D8EE" x="304" y="48" />
+		<entity schema="Default" name="realizacoes" color="D0EEC1" x="48" y="384" />
+	</layout>
+	<layout name="Main Layout" id="Layout-1f3b" show_relation="columns" >
+		<entity schema="Default" name="TblAmostras" color="C1D8EE" x="464" y="80" />
+		<entity schema="Default" name="TblColetor" color="C1D8EE" x="48" y="48" />
+		<entity schema="Default" name="TblPlanta" color="C1D8EE" x="240" y="48" />
+	</layout>
+</project>
