@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width" />
+    <title>CRUD</title>
+  </head>
+  <h1>Atualização de pessoa</h1>
+
+    <form name="form1" method="post" action="/atualizapessoa/update">
+        ID: <input type="number" id="id" name="id" size="50" value="">
+        <br>
+        NOME: <input type="text" id="nome" name="nome" size="50" value="">
+        <br>
+        FOTO: <input type="text" id="foto" name="foto" size="50" value="">
+        <br>
+        ENDERECO: <input type="text" id="endereco" name="endereco" size="50" value="">
+        <br>
+        TELEFONE: <input type="text" id="telefone" name="telefone" value="">
+        <br>
+        EMAIL: <input type="text" id="email" name="email" value="">
+        <br>
+        CARGO: <input type="text" id="cargo" name="cargo" value="">
+        <br>
+        DESCRICAO: <input type="text" id="descricao" name="descricao" value="">
+        <br>
+        <button type="submit">Atualizar</button>
+    </form>    
+
+    <script>
+        let url = new URL(window.location.href);
+        let params = url.searchParams;
+        url = '/atualizaPessoa?id_pessoa='+url.searchParams.get("id_pessoa");
+
+        fetch(url)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            let pessoas = data;
+
+            pessoas.map(function(pessoa) {
+                document.getElementById('id_pessoa').value = pessoa.id_pessoa;
+                document.getElementById('nome').value = pessoa.nome;
+                document.getElementById('foto').value = pessoa.foto;
+                document.getElementById('endereco').value = pessoa.endereco;
+                document.getElementById('telefone').value = pessoa.telefone;
+                document.getElementById('email').value = pessoa.email;
+                document.getElementById('cargo').value = pessoa.cargo;
+                document.getElementById('descricao').value = pessoa.descricao;
+            });
+            alert(response.json());
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    </script>
+</body>
+</html>
