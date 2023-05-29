@@ -1,0 +1,54 @@
+body {
+    margin: 0 auto;
+    width: 70%;
+}
+
+main div {
+    background-color: #f9f1f8;
+    border-style: 5px solid;
+}
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #C1B1CC;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#tela-esquerda, #tela-direita {
+    width: 40%;
+    margin: 0 auto;
+}
+
+img {
+    border-radius: 10%;
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    object-fit: cover;
+    object-position: 0 0;
+}
+
+h2{
+    border-bottom: 2px solid black;
+    background-color: #C2AB82;
+    padding: 1.5rem;
+    border-radius: 10px 10px 0 0;
+}
+
+.container {
+    background-color: #fae9f8;
+    border-radius: 10px;
+    padding-bottom: 1rem;
+}
+
+.dividir-tela {
+    display: flex;
+}
+
+hr {
+    clear: both;
+    visibility: hidden;
+}
