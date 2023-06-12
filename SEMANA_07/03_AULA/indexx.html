@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cores de tabela</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <style>
+        table {
+        border-collapse: collapse;
+        }
+        td {
+        padding: 10px;
+        border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table id="myTable">
+    <tr>
+        <td>Coluna 1</td>
+        <td>Coluna 2</td>
+        <td>Coluna 3</td>
+    </tr>
+    <tr>
+        <td>Coluna 4</td>
+        <td>Coluna 5</td>
+        <td>Coluna 6</td>
+    </tr>
+    </table>
+
+    <script>
+        function changeColor() {
+          var table = document.getElementById("myTable");
+          var rows = table.getElementsByTagName("tr");
+      
+          for (var i = 0; i < rows.length; i++) {
+            if (i % 2 === 0) {
+              rows[i].style.backgroundColor = "purple";
+            } else {
+              rows[i].style.backgroundColor = "orange";
+            }
+          }
+        }
+      </script>
+    <button onclick="changeColor()">Trocar cor</button>
+
+</body>
+</html>
